@@ -13,7 +13,6 @@ function takeTurn() {
     document.getElementById("diceImage").src = `img/dice${randomDiceRoll}.png`;
 }
 
-
 function computerTakeTurn() {
 
     computerRoll = (Math.floor(Math.random()*6+1));
@@ -21,7 +20,19 @@ function computerTakeTurn() {
     computerScore = computerScore + computerRoll;
 
     document.getElementById("computerScore").innerHTML = computerScore;
-    document.getElementById("diceImage").src = `img/dice${computerRoll}.png`;
+    document.getElementById("diceImage2").src = `img/dice${computerRoll}.png`;
 }
 
-document.getElementById("button").addEventListener("click", takeTurn); 
+function checkScore() {
+    if (score >= 20) {
+        alert('You win!'); location.reload();
+    } else if (computerScore >=20) {
+        alert('Sorry. computer wins'); location.reload();
+    } else ('roll again');
+}
+
+document.getElementById('button').addEventListener('click',() => {    
+    takeTurn();
+    computerTakeTurn();
+    checkScore();
+});
